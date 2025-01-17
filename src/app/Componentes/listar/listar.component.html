@@ -1,0 +1,57 @@
+<div class="container mt-4">
+     <div class="input-group w-50">
+                <input type="text"class="form-control" [(ngModel)]="statusFiltro" placeholder="Buscar por status" />
+                <button type="button"class="btn btn-outline-primary"(click)="buscarPorStatus()"> Buscar</button>
+              </div>
+              
+    <div class="card mt-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="card-title text-center w-100">
+                Listado de Monedas
+            </h4>
+        <button type="button" class="btn btn-outline-success"(click)="guardar()">GUARDAR</button>
+       </div>
+        
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>NUM.CIA</th>
+                        <th>CLAVE MONEDA</th>
+                        <th>DESCRIPCION</th>
+                        <th>SIMBOLO</th>
+                        <th>ABREVIACION</th>
+                        <th>MONEDA CORRIENTE</th>
+                        <th>STATUS</th>
+                        <th>EDITAR</th>
+                        <th>ELIMINAR</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(moneda of moneda; track moneda.numCia){
+                    <tr>
+                        <td>{{moneda.numCia}}</td>
+                        <td>{{moneda.claveMoneda}}</td>
+                        <td>{{moneda.descripcion}}</td>
+                        <td>{{moneda.simbolo}}</td>
+                        <td>{{moneda.abreviacion}}</td>
+                        <td>{{moneda.monedaCorriente}}</td>
+                        <td>{{moneda.status}}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary"(click)="editar(moneda)">EDITAR</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-warning"(click)="eliminar(moneda.numCia)">ELIMINAR</button>
+                        </td>
+                       
+                    </tr>}
+                    @empty{
+                        <td colspan="7" style="text-align: center;">No existen registros</td>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

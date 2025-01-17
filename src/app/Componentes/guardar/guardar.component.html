@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card">
+        <div class ="card-header" style="text-align:center;">
+            <h4 class="hard-title">
+                Nuevo Moneda
+            </h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="numCia">NUM CIA</label>
+                <input TYPE="NUMBER" name="numCia"class="form-control"[(ngModel)]="moneda.numCia"requerid>
+            </div>
+           
+                <div class="mb-3">
+                    <label for="claveMoneda">CLAVE MONEDA</label>
+                    <input TYPE="text" name="claveMoneda"class="form-control"[(ngModel)]="moneda.claveMoneda"requerid>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="descripcion">DESCRIPCION</label>
+                    <input TYPE="text" name="descripcion"class="form-control"[(ngModel)]="moneda.descripcion"requerid>
+                </div>
+                <div class="mb-3">
+                    <label for="simbolo">SIMBOLO</label>
+                    <input TYPE="text" name="simbolo"class="form-control"[(ngModel)]="moneda.simbolo"requerid>
+                </div>
+                <div class="mb-3">
+                    <label for="abreviacion">ABREVIACION</label>
+                    <input TYPE="text" name="abreviacion"class="form-control"[(ngModel)]="moneda.abreviacion"requerid>
+                </div>
+                <div class="mb-3">
+                    <label for="monedaCorriente">MONEDA CORRIENTE</label>
+                    <input TYPE="text" name="monedaCorriente"class="form-control"[(ngModel)]="moneda.monedaCorriente"requerid>
+                </div>
+                <div class="mb-3">
+                    <label for="status">STATUS</label>
+                    <input TYPE="text" name="status"class="form-control"[(ngModel)]="moneda.status"requerid>
+                </div>
+        </div>
+        <div class="card-footer" style="text-align:center;">
+            <button class="btn btn-outline-success"(click)="guardar()">GUARDAR</button>
+        </div>
+    </div>
+</div>
