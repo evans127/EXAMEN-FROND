@@ -28,7 +28,10 @@ export class WsService {
 eliminar(numCia:number){
   return this.hhtp.delete<Moneda>(`${this.url}/eliminar/${numCia}`);
 }
-buscarPorStatus(status: string){
-  return this.hhtp.get<Moneda[]>(`${this.url}/porStatus`, {params: { status },});
+ filtrar(status: string, numCia: number | null) {
+  let params: any = {};
+  if (status) params.status = status;
+  if (numCia !== null) params.numCia = numCia;
+return this.hhtp.get<Moneda | Moneda[]>(`${this.url}/filtro`, {params: params,});
 }
 }

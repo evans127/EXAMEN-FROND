@@ -1,8 +1,9 @@
 <div class="container mt-4">
      <div class="input-group w-50">
-                <input type="text"class="form-control" [(ngModel)]="statusFiltro" placeholder="Buscar por status" />
-                <button type="button"class="btn btn-outline-primary"(click)="buscarPorStatus()"> Buscar</button>
-              </div>
+        <input type="text"class="form-control"[(ngModel)]="statusFiltro" placeholder="Buscar por status"/>
+        <input type="number"class="form-control"[(ngModel)]="numCiaFiltro" placeholder="Buscar por numCia"/>
+      <button type="button" class="btn btn-outline-primary" (click)="buscar()"> Buscar</button>
+     </div>
               
     <div class="card mt-4">
         <div class="card-header d-flex justify-content-between align-items-center">

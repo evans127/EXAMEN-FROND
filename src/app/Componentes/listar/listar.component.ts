@@ -15,6 +15,7 @@ export class ListarComponent implements OnInit{
  constructor(private router:Router, private service:WsService){}
  moneda !:Moneda[];
  statusFiltro: string = '';
+ numCiaFiltro: number | null = null;
  ngOnInit(): void {
    this.listar();
  }
@@ -55,13 +56,34 @@ eliminar(numCia:number){
     }
   });
 }
-buscarPorStatus() {
-  if (this.statusFiltro.trim() === '') {
+buscar() {
+  if (!this.statusFiltro.trim() && this.numCiaFiltro === null) {
     this.listar();
   } else {
-    this.service.buscarPorStatus(this.statusFiltro).subscribe(data => {
-      this.moneda = data;
-    });
+    this.service
+      .filtrar(this.statusFiltro, this.numCiaFiltro)
+      .subscribe(
+        (data) => {
+          this.moneda = Array.isArray(data) ? data : [data];
+          if (this.moneda.length === 0) {
+            Swal.fire({
+              icon: 'info',
+              title: 'No se encontraron resultados',
+              text: 'No se encontraron monedas con los filtros proporcionados.',
+            });
+          }
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un error al buscar las monedas. Inténtalo nuevamente.',
+          });
+          this.statusFiltro = '';
+          this.numCiaFiltro = null;
+          this.listar();
+        }
+      );
   }
 }
 }
